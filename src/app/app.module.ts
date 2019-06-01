@@ -12,8 +12,14 @@ import {ToastModule} from 'primeng/toast';
 import { AppComponent } from './app.component';
 import { MessageService, ConfirmationService } from 'primeng/api';
 import {Routes, RouterModule} from '@angular/router';
+import { CidadesModule } from './cidades/cidades.module';
+import { CidadesCadastroComponent } from './cidades/cidades-cadastro/cidades-cadastro.component';
+import {SidebarModule} from 'primeng/sidebar';
+import { ButtonModule } from 'primeng/button';
 
 const rotas: Routes = [
+  {path: '', redirectTo:'categorias', pathMatch:'full'},
+  {path: 'cidades', component: CidadesCadastroComponent},
   {path: 'categorias', component: CategoriasPesquisaComponent},
   {path: 'categorias/novo', component: CategoriasCadastroComponent},
   {path: 'categorias/:id', component: CategoriasCadastroComponent},
@@ -30,8 +36,10 @@ const rotas: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     CategoriasModule,
+    CidadesModule,
     HttpClientModule,
-    ToastModule,
+    SidebarModule,
+    ButtonModule,
     EstadosModule,
     RouterModule.forRoot(rotas)
   ],
